@@ -9,7 +9,7 @@
  * };
  */
 class Solution {
-public:
+public:  
     ListNode* oddEvenList(ListNode* head) {
         if(head  == NULL || head->next == NULL){
             return head;
