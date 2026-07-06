@@ -1,7 +1,7 @@
-#include<stack>
+
 /**
  * Definition for singly-linked list.
- * struct ListNode {  
+ * struct ListNode {
  *     int val;
  *     ListNode *next;
  *     ListNode() : val(0), next(nullptr) {}
@@ -11,23 +11,37 @@
  */
 class Solution {
 public:
+
+    ListNode* revers(ListNode* slow){
+        ListNode* temp = slow->next;
+        ListNode* nex = NULL;
+        ListNode* prev = NULL;
+        while(temp != NULL){
+            nex = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = nex;
+        }
+        return prev;
+
+    }
     bool isPalindrome(ListNode* head) {
-        stack<int> st;
-        bool s = true;
-        ListNode* temp = head;
-        while(temp != NULL){
-            st.push(temp->val);
-            temp = temp->next;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast->next != NULL && fast->next->next != NULL){
+            fast = fast->next->next;
+            slow = slow->next;
         }
-        temp = head;
-        while(temp != NULL){
-            if(st.top() != temp->val){
-                s = false;
-                return s;
+
+        ListNode* newhead = revers(slow);
+        ListNode* firsthead = head;
+        while(newhead != NULL){
+            if(newhead ->val != firsthead->val){
+                return false;
             }
-            st.pop();
-            temp = temp->next;
+            newhead = newhead->next;
+            firsthead = firsthead->next;
         }
-        return s;
+        return true;
     }
 };
