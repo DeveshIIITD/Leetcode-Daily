@@ -11,18 +11,21 @@
 class Solution {     // Brute force solution with O(2n).
 public:
     int length(ListNode* head) {
-      unordered_map<ListNode,int> mpp;
-      ListNode* temp = head;
-      int timer = 1;
-      while(temp != NULL){
-        if(mpp.find(temp) != mpp.end()){
-          int value = mpp[temp];
-          return timer-value;
-        }
-        mpp[temp] = timer;
-        timer++;
-        temp = temp->next;
+      ListNode* slow = head;
+      ListNode* fast = head;
+      while(fast != NULL && fast->next != NULL){
+          slow = slow->next;
+          fast = fast->next->next;
+          if(slow == fast){
+              break;
+          }
       }
-      return 0;
+        int cnt = 1;
+        fast = fast->next;
+        while(slow != fast){
+            cnt++;
+            fast = fast->next;
+        }
+        return cnt;
     }
 };
