@@ -4,7 +4,7 @@ public:
         int n = nums.size();
         int maxlen = 0,l = 0, r = 0, zeros = 0;
         while(r < n){
-            if(nums[r] == 0){
+            if(nums[r] == 0){   
                 zeros++;
             }
 
