@@ -8,7 +8,7 @@ public:
             if(lastseen[0] != -1 && lastseen[1] != -1 && lastseen[2] != -1){
                 int minel = min(lastseen[0],lastseen[1]);
                 cnt = cnt + (1 + min(minel,lastseen[2]));
-            }        
+            }           
         }
         return cnt;  
     }
