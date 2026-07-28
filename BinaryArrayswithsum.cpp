@@ -10,7 +10,7 @@ public:
             while(l <= r && sum > goal){
                 sum = sum - nums[l];
                 l++;
-            }
+            }       
             cnt = cnt + (r-l+1);
             r++;
         }
