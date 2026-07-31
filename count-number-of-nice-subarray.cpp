@@ -10,7 +10,7 @@ public:
             while(l <= r && sum > k){
                 sum = sum - (nums[l] % 2);
                 l++;
-            }    
+            }          
             cnt = cnt + (r-l+1);
             r++;
         }
